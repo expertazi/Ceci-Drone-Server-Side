@@ -200,6 +200,14 @@ async function run() {
       console.log("deleteing the Product ", result);
       res.json(result);
     });
+    // Delete Api Post
+    app.delete("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await usersCollection.deleteOne(query);
+      console.log("deleteing the user ", result);
+      res.json(result);
+    });
   } finally {
     // await client.close();
   }
